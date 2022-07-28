@@ -45,7 +45,7 @@ class HomePageState extends State<HomePage> {
         : EdgeInsets.fromLTRB(32, 0, 32, 0);
 
     List<Widget> navButtons() => [
-          NavButtonWidget(
+          /* NavButtonWidget(
               text: "Навыки",
               padding: menuButtonPadding,
               onPressed: () => js.context.callMethod('open', [
@@ -60,7 +60,7 @@ class HomePageState extends State<HomePage> {
               padding: menuButtonPadding,
               text: "Контакты",
               onPressed: () => js.context
-                  .callMethod('open', ['https://github.com/AlexeySidorov'])),
+                  .callMethod('open', ['https://github.com/AlexeySidorov'])),*/
           NavButtonWidget(
               padding: menuButtonPadding,
               text: "GitHub",
