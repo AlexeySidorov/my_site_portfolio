@@ -24,6 +24,9 @@ class ProfileInfoWidget extends StatelessWidget {
   profileData(context) => Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
+          SizedBox(
+            height: MediaQuery.of(context).size.height * 0.05,
+          ),
           Text(
             "Всем привет! Меня зовут Алексей, я",
             textAlign: ResponsiveWidget.isSmallScreen(context)
@@ -35,6 +38,9 @@ class ProfileInfoWidget extends StatelessWidget {
               fontFamily: "RobotoRegular",
             ),
           ),
+          SizedBox(
+            height: MediaQuery.of(context).size.height * 0.05,
+          ),
           Text(
             "MOBILE DEVELOPER",
             textAlign: ResponsiveWidget.isSmallScreen(context)
@@ -42,7 +48,9 @@ class ProfileInfoWidget extends StatelessWidget {
                 : TextAlign.left,
             textScaleFactor: 3,
             style: TextStyle(
-                color: Colors.orange, fontFamily: "KidCraft", fontSize: 72),
+                color: Colors.orange,
+                fontFamily: "KidCraft",
+                fontSize: ResponsiveWidget.isSmallScreen(context) ? 24 : 72),
           ),
           SizedBox(
             height: 30,

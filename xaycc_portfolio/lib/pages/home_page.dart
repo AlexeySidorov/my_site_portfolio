@@ -68,6 +68,8 @@ class HomePageState extends State<HomePage> {
                   .callMethod('open', ['https://github.com/AlexeySidorov']))
         ];
 
+    double marginTop = ResponsiveWidget.isSmallScreen(context) ? 0.1 : 0;
+
     return ResponsiveWidget(
       largeScreen: Scaffold(
         backgroundColor: Colors.transparent,
@@ -101,11 +103,11 @@ class HomePageState extends State<HomePage> {
                 children: <Widget>[
                   NavHeaderWidget(navButtons: navButtons()),
                   SizedBox(
-                    height: MediaQuery.of(context).size.height * 0.1,
+                    height: MediaQuery.of(context).size.height * marginTop,
                   ),
                   ProfileInfoWidget(),
                   SizedBox(
-                    height: MediaQuery.of(context).size.height * 0.25,
+                    height: MediaQuery.of(context).size.height * marginTop,
                   ),
                   /* Container(
                     child: GalleryWidget(),
