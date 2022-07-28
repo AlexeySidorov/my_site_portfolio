@@ -1,0 +1,90 @@
+[
+    {
+      "family": "MaterialIcons",
+      "fonts": [
+        {
+          "asset": "https://fonts.gstatic.com/s/materialicons/v42/flUhRq6tzZclQEJ-Vdg-IuiaDsNcIhQ8tQ.woff2"
+        }
+      ]
+    },
+    {
+      "family": "GoogleFontApps",
+      "fonts": [
+        {
+          "asset": "fonts/GoogleSansRegular.ttf"
+        }
+      ]
+    },
+    {
+      "family": "HalimunFontApps",
+      "fonts": [
+        {
+          "asset": "fonts/Halimun.ttf"
+        }
+      ]
+    },
+    {
+      "family": "VeganFontApps",
+      "fonts": [
+        {
+        "asset": "fonts/VeganStylePersonalUse.ttf"
+        }
+      ]
+    },
+    {
+      "family": "Datcub",
+      "fonts": [
+        {
+        "asset": "fonts/Datcub.ttf"
+        }
+      ]
+    },
+    {
+      "family": "DatcubBold",
+      "fonts": [
+        {
+        "asset": "fonts/DatcubBold.ttf"
+        }
+      ]
+    },
+    {
+      "family": "DatcubLight",
+      "fonts": [
+        {
+        "asset": "fonts/DatcubLight.ttf"
+        }
+      ]
+    },
+    {
+      "family": "RobotoBold",
+      "fonts": [
+        {
+        "asset": "fonts/RobotoBold.ttf"
+        }
+      ]
+    },
+    {
+      "family": "RobotoRegular",
+      "fonts": [
+        {
+        "asset": "fonts/RobotoRegular.ttf"
+        }
+      ]
+    },
+    {
+      "family": "DatcubBold",
+      "fonts": [
+        {
+        "asset": "fonts/DatcubBold.ttf"
+        }
+      ]
+    },
+    {
+      "family": "KidCraft",
+      "fonts": [
+        {
+        "asset": "fonts/KidCraft.ttf"
+        }
+      ]
+    }    
+]
