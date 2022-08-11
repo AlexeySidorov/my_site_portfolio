@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:xaycc_portfolio/infrastructure/tools/responsive_widget.dart';
 
 class SkillWidget extends StatelessWidget {
-  const SkillWidget({Key key}) : super(key: key);
+  const SkillWidget({Key? key}) : super(key: key);
 
   Widget build(BuildContext context) {
     return ResponsiveWidget(

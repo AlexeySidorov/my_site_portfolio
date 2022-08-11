@@ -3,9 +3,9 @@ import 'package:xaycc_portfolio/infrastructure/tools/responsive_widget.dart';
 import 'package:xaycc_portfolio/ui/widgets/LiveDotWidget.dart';
 
 class NavHeaderWidget extends StatefulWidget {
-  final List<Widget> navButtons;
+  final List<Widget>? navButtons;
 
-  const NavHeaderWidget({Key key, this.navButtons}) : super(key: key);
+  const NavHeaderWidget({Key? key, required this.navButtons}) : super(key: key);
 
   @override
   NavHeaderWidgetState createState() => NavHeaderWidgetState();
@@ -105,7 +105,7 @@ class NavHeaderWidgetState extends State<NavHeaderWidget> {
               alignment: Alignment.center,
               padding: EdgeInsets.fromLTRB(48, 6, 48, 0),
               child: Row(
-                children: widget.navButtons,
+                children: widget.navButtons ?? [],
               )),
           getSocialWidgets()
         ],

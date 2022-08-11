@@ -8,7 +8,7 @@ class NavButtonWidget extends StatelessWidget {
   final EdgeInsets padding;
 
   const NavButtonWidget(
-      {Key key,
+      {Key? key,
       @required this.text,
       @required this.onPressed,
       this.textColor = Colors.white,

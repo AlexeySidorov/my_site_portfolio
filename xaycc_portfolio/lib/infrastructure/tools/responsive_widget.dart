@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
 class ResponsiveWidget extends StatelessWidget {
-  final Widget largeScreen;
-  final Widget mediumScreen;
-  final Widget customMediumScreen;
-  final Widget smallScreen;
+  final Widget? largeScreen;
+  final Widget? mediumScreen;
+  final Widget? customMediumScreen;
+  final Widget? smallScreen;
 
   const ResponsiveWidget(
-      {Key key,
+      {Key? key,
       @required this.largeScreen,
       this.mediumScreen,
       this.customMediumScreen,
@@ -31,21 +31,47 @@ class ResponsiveWidget extends StatelessWidget {
     return MediaQuery.of(context).size.width <= 985;
   }
 
+  Widget getLargeScreen() {
+    return largeScreen as Widget;
+  }
+
+  Widget getCustomMediumScreen() {
+    return customMediumScreen as Widget;
+  }
+
+  Widget getMediumScreen() {
+    return mediumScreen as Widget;
+  }
+
+  Widget getSmallScreen() {
+    return smallScreen as Widget;
+  }
+
   @override
   Widget build(BuildContext context) {
     return LayoutBuilder(
       builder: (context, constraints) {
-        if (constraints != null && constraints.maxWidth > 1200) {
-          return largeScreen;
-        } else if (constraints != null &&
-            constraints.maxWidth < 1200 &&
-            constraints.maxWidth > 800) {
+        if (constraints.maxWidth > 1200) {
+          return getLargeScreen();
+        } else if (constraints.maxWidth < 1200 && constraints.maxWidth > 800) {
           if (constraints.maxWidth <= 985) {
-            return customMediumScreen ?? mediumScreen;
-          } else
-            return mediumScreen ?? largeScreen;
+            if (customMediumScreen == null || mediumScreen == null)
+              return Container();
+            else if (customMediumScreen != null)
+              return getCustomMediumScreen();
+            else
+              return getMediumScreen();
+          } else {
+            if (mediumScreen != null)
+              return getMediumScreen();
+            else
+              return getSmallScreen();
+          }
         } else {
-          return smallScreen ?? largeScreen;
+          if (smallScreen != null)
+            return getSmallScreen();
+          else
+            return getLargeScreen();
         }
       },
     );

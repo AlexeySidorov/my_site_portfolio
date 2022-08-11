@@ -39,13 +39,13 @@ class _ParticlesState extends State<Particles> {
   @override
   Widget build(BuildContext context) {
     return Rendering(
-      startTime: Duration(seconds: 30),
-      onTick: _simulateParticles,
-      builder: (context, time) {
+      (context, time) {
         return CustomPaint(
           painter: ParticlePainter(particles, time),
         );
       },
+      onTick: _simulateParticles,
+      startTime: Duration(seconds: 30),
     );
   }
 
@@ -55,9 +55,9 @@ class _ParticlesState extends State<Particles> {
 }
 
 class ParticleModel {
-  Animatable tween;
-  double size;
-  AnimationProgress animationProgress;
+  late Animatable tween;
+  double size = 0;
+  late AnimationProgress animationProgress;
   Random random;
 
   ParticleModel(this.random) {
@@ -77,6 +77,7 @@ class ParticleModel {
           duration, Tween(begin: startPosition.dy, end: endPosition.dy),
           curve: Curves.easeIn),
     ]);
+
     animationProgress = AnimationProgress(duration: duration, startTime: time);
     size = 0.2 + random.nextDouble() * 0.4;
   }
@@ -122,10 +123,10 @@ class AnimatedBackground extends StatelessWidget {
     ]);
 
     return ControlledAnimation(
-      playback: Playback.MIRROR,
-      tween: tween,
-      duration: tween.duration,
-      builder: (context, animation) {
+      (context, animation) {
+        if (animation == null) return Container();
+
+        var anim = animation as Map<String, dynamic>;
         return Container(
           child:
               AnimatedParticle(), //Comment this when not using particle_flutter
@@ -133,9 +134,12 @@ class AnimatedBackground extends StatelessWidget {
               gradient: LinearGradient(
                   begin: Alignment.topLeft,
                   end: Alignment.bottomRight,
-                  colors: [animation["color1"], animation["color2"]])),
+                  colors: [anim["color1"], anim["color2"]])),
         );
       },
+      tween: tween,
+      playback: Playback.MIRROR,
+      duration: tween.duration,
     );
   }
 }
@@ -153,13 +157,11 @@ class _AnimatedParticleState extends State<AnimatedParticle> {
           ColorTween(begin: Color(0xff8a113a), end: Colors.lightBlue.shade900)),
     ]);
 
-    return ControlledAnimation(
-      playback: Playback.MIRROR,
-      tween: tween,
-      duration: tween.duration,
-      builder: (context, animation) {
-        return particle.Particles(150, animation["color1"]);
-      },
-    );
+    return ControlledAnimation((context, animation) {
+      if (animation == null) return Container();
+
+      var anim = animation as Map<String, dynamic>;
+      return particle.Particles(150, anim["color1"]);
+    }, tween: tween, playback: Playback.MIRROR, duration: tween.duration);
   }
 }

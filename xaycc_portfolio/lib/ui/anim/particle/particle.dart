@@ -3,24 +3,29 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 
 class Particle {
-  final Color color;
-  double xCoor;
-  double yCoor;
-  final double size;
-  double xDirection;
-  double yDirection;
-  static double widgetWidth;
-  static double widgetHeight;
+  late final Color color;
+  double xCoor = 0;
+  double yCoor = 0;
+  late final double size;
+  late double xDirection;
+  late double yDirection;
+  static double widgetWidth = 0;
+  static double widgetHeight = 0;
   static double connectDistance = 100.0;
   static double speedUp = 3.0;
   Random random = new Random();
 
-  Particle({
-    this.color,
-    this.xCoor,
-    this.yCoor,
-    this.size,
-  });
+  Particle(
+    Color color,
+    double xCoor,
+    double yCoor,
+    double size,
+  ) {
+    this.color = color;
+    this.xCoor = xCoor;
+    this.yCoor = yCoor;
+    this.size = size;
+  }
 
   bool isNear(Particle anotherParticle) {
     // Calculate the distance between two particles
@@ -29,10 +34,7 @@ class Particle {
         (this.yCoor - anotherParticle.yCoor) *
             (this.yCoor - anotherParticle.yCoor);
 
-    if (sqrt(distance) <= connectDistance) {
-      return true;
-    }
-    return false;
+    return sqrt(distance) <= connectDistance;
   }
 
   void getRandomDirection() {

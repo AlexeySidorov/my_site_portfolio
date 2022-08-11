@@ -19,8 +19,7 @@ class Particles extends StatefulWidget {
 
 class ParticlesState extends State<Particles>
     with SingleTickerProviderStateMixin {
-  Animation animation;
-  AnimationController animationController;
+  late AnimationController animationController;
   Random random = Random();
 
   List<Particle> particlesList = [];
@@ -29,12 +28,8 @@ class ParticlesState extends State<Particles>
     for (int i = 1; i <= widget.numParticle; i++) {
       // Added particle to particlesList
       particlesList.add(
-        Particle(
-          color: widget.particlesColor,
-          xCoor: random.nextDouble() * 400 + 10,
-          yCoor: random.nextDouble() * 400 + 10,
-          size: 3.0,
-        ),
+        Particle(widget.particlesColor, random.nextDouble() * 400 + 10,
+            random.nextDouble() * 400 + 10, 3.0),
       );
     }
   }
@@ -42,6 +37,7 @@ class ParticlesState extends State<Particles>
   @override
   void initState() {
     super.initState();
+
     animationController = AnimationController(
       duration: Duration(milliseconds: 100),
       vsync: this,

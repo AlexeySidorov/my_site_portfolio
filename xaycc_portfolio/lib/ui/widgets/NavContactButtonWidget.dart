@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class NavContactButtonWidget extends StatelessWidget {
   final text;
-  final IconData icon;
+  final IconData? icon;
   final onPressed;
   final Color textColor;
   final Color backgroundColor;
@@ -11,7 +11,7 @@ class NavContactButtonWidget extends StatelessWidget {
   final double height;
 
   const NavContactButtonWidget(
-      {Key key,
+      {Key? key,
       @required this.icon,
       @required this.text,
       @required this.onPressed,
