@@ -70,58 +70,57 @@ class HomePageState extends State<HomePage> {
 
     double marginTop = ResponsiveWidget.isSmallScreen(context) ? 0.1 : 0;
 
-    return ResponsiveWidget(
-      largeScreen: Scaffold(
-        backgroundColor: Colors.transparent,
-        appBar: ResponsiveWidget.isSmallScreen(context)
-            ? AppBar(
-                elevation: 0.0,
-                backgroundColor: Colors.transparent,
-              )
-            : null,
-        drawer: ResponsiveWidget.isSmallScreen(context) ||
-                ResponsiveWidget.isMediumScreen(context)
-            ? Drawer(
-                elevation: 10,
-                child: ListView(
-                  padding: const EdgeInsets.all(20),
-                  children: navButtons(),
-                ),
-              )
-            : null,
-        body: SingleChildScrollView(
-          child: AnimatedPadding(
-            duration: Duration(seconds: 1),
-            padding: EdgeInsets.fromLTRB(
-                MediaQuery.of(context).size.height * 0.1,
-                MediaQuery.of(context).size.height * 0.01,
-                MediaQuery.of(context).size.height * 0.1,
-                0),
-            child: ResponsiveWidget(
-              largeScreen: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: <Widget>[
-                  NavHeaderWidget(navButtons: navButtons()),
-                  SizedBox(
-                    height: MediaQuery.of(context).size.height * marginTop,
-                  ),
-                  ProfileInfoWidget(),
-                  SizedBox(
-                    height: MediaQuery.of(context).size.height * marginTop,
-                  ),
-                  /* Container(
+    return Scaffold(
+      backgroundColor: Colors.transparent,
+      appBar: ResponsiveWidget.isSmallScreen(context) ||
+              ResponsiveWidget.isMediumScreen(context) ||
+              ResponsiveWidget.isCustomMediumScreen(context)
+          ? AppBar(
+              elevation: 0.0,
+              backgroundColor: Colors.transparent,
+            )
+          : null,
+      drawer: ResponsiveWidget.isSmallScreen(context) ||
+              ResponsiveWidget.isMediumScreen(context) ||
+              ResponsiveWidget.isCustomMediumScreen(context)
+          ? Drawer(
+              elevation: 10,
+              child: ListView(
+                padding: const EdgeInsets.all(20),
+                children: navButtons(),
+              ),
+            )
+          : null,
+      body: SingleChildScrollView(
+        child: AnimatedPadding(
+          duration: Duration(seconds: 1),
+          padding: EdgeInsets.fromLTRB(
+              MediaQuery.of(context).size.height * 0.1,
+              MediaQuery.of(context).size.height * 0.01,
+              MediaQuery.of(context).size.height * 0.1,
+              0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: <Widget>[
+              NavHeaderWidget(navButtons: navButtons()),
+              SizedBox(
+                height: MediaQuery.of(context).size.height * marginTop,
+              ),
+              //ProfileInfoWidget(),
+              SizedBox(
+                height: MediaQuery.of(context).size.height * marginTop,
+              ),
+              /* Container(
                     child: GalleryWidget(),
                     width: 1500,
                     height: getGalleryContainerHeight(context),
                     color: Colors.red,
                   ),*/
-                  SizedBox(
-                    height: MediaQuery.of(context).size.height * 0.25,
-                  ),
-                  SocialInfoWidget(),
-                ],
+              SizedBox(
+                height: MediaQuery.of(context).size.height * 0.25,
               ),
-            ),
+              //  SocialInfoWidget(),
+            ],
           ),
         ),
       ),

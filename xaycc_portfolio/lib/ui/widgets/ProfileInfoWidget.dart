@@ -64,15 +64,8 @@ class ProfileInfoWidget extends StatelessWidget {
         ],
       );
 
-  @override
-  Widget build(BuildContext context) {
-    return ResponsiveWidget(
-      largeScreen: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: <Widget>[profileImage(context), profileData(context)],
-      ),
-      smallScreen: Column(
+  Widget getSmallMediumWidgets(BuildContext context) {
+    return Column(
         mainAxisSize: MainAxisSize.max,
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
@@ -81,8 +74,19 @@ class ProfileInfoWidget extends StatelessWidget {
             height: MediaQuery.of(context).size.height * 0.1,
           ),*/
           profileData(context),
-        ],
-      ),
-    );
+        ]);
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return ResponsiveWidget(
+        largeScreen: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: <Widget>[profileImage(context), profileData(context)],
+        ),
+        customMediumScreen: getSmallMediumWidgets(context),
+        mediumScreen: getSmallMediumWidgets(context),
+        smallScreen: getSmallMediumWidgets(context));
   }
 }

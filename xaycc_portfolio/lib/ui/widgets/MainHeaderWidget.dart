@@ -92,7 +92,8 @@ class NavHeaderWidgetState extends State<NavHeaderWidget> {
           LiveDotWidget(),
         ],
       );
-    } else if (ResponsiveWidget.isMediumScreen(context)) {
+    } else if (ResponsiveWidget.isMediumScreen(context) ||
+        ResponsiveWidget.isCustomMediumScreen(context)) {
       return Wrap(
         alignment: WrapAlignment.center,
         children: <Widget>[
@@ -129,11 +130,10 @@ class NavHeaderWidgetState extends State<NavHeaderWidget> {
   }
 
   Widget build(BuildContext context) {
-    return ResponsiveWidget(
-        largeScreen: Container(
-            decoration: BoxDecoration(
-                color: Colors.transparent,
-                borderRadius: BorderRadius.all(Radius.circular(10))),
-            child: getHeaderWidgets(context)));
+    return Container(
+        decoration: BoxDecoration(
+            color: Colors.transparent,
+            borderRadius: BorderRadius.all(Radius.circular(10))),
+        child: getHeaderWidgets(context));
   }
 }

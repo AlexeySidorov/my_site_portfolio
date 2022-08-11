@@ -7,18 +7,16 @@ class MainTopHeaderWidget extends StatelessWidget {
   const MainTopHeaderWidget({Key? key, this.navButtons}) : super(key: key);
 
   Widget build(BuildContext context) {
-    return ResponsiveWidget(
-      largeScreen: Row(
-        mainAxisAlignment: ResponsiveWidget.isSmallScreen(context)
-            ? MainAxisAlignment.center
-            : MainAxisAlignment.end,
-        crossAxisAlignment: CrossAxisAlignment.end,
-        children: <Widget>[
-          Row(
-            children: navButtons ?? [],
-          )
-        ],
-      ),
+    return Row(
+      mainAxisAlignment: ResponsiveWidget.isSmallScreen(context)
+          ? MainAxisAlignment.center
+          : MainAxisAlignment.end,
+      crossAxisAlignment: CrossAxisAlignment.end,
+      children: <Widget>[
+        Row(
+          children: navButtons ?? [],
+        )
+      ],
     );
   }
 }
