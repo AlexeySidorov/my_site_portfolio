@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:xaycc_portfolio/infrastructure/tools/responsive_widget.dart';
 import 'package:xaycc_portfolio/ui/widgets/LiveDotWidget.dart';
+import "dart:js" as js;
 
 class NavHeaderWidget extends StatefulWidget {
   final List<Widget>? navButtons;
@@ -19,7 +20,10 @@ class NavHeaderWidgetState extends State<NavHeaderWidget> {
           Container(
               padding: EdgeInsets.fromLTRB(12, 0, 12, 0),
               child: InkWell(
-                onTap: () {},
+                onTap: () {
+                  js.context.callMethod(
+                      'open', ['tg://msg?text=Mi_mensaje&to=+79826161244']);
+                },
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(16.0),
                   child: Image.asset("images/icon_telegram.png",
@@ -29,7 +33,10 @@ class NavHeaderWidgetState extends State<NavHeaderWidget> {
           Container(
               padding: EdgeInsets.fromLTRB(12, 0, 12, 0),
               child: InkWell(
-                  onTap: () {},
+                  onTap: () {
+                    js.context.callMethod('open',
+                        ['https://api.whatsapp.com/send?phone=89826161244']);
+                  },
                   child: ClipRRect(
                       borderRadius: BorderRadius.circular(16.0),
                       child: Image.asset("images/icon_whatsapp.png",
@@ -37,7 +44,9 @@ class NavHeaderWidgetState extends State<NavHeaderWidget> {
           Container(
               padding: EdgeInsets.fromLTRB(12, 0, 12, 0),
               child: InkWell(
-                  onTap: () {},
+                  onTap: () {
+                    js.context.callMethod('open', ['skype:x.a.y.c.c.?chat']);
+                  },
                   child: ClipRRect(
                       borderRadius: BorderRadius.circular(16.0),
                       child: Image.asset("images/icon_skype.png",
@@ -45,23 +54,29 @@ class NavHeaderWidgetState extends State<NavHeaderWidget> {
           Container(
               padding: EdgeInsets.fromLTRB(12, 0, 12, 0),
               child: InkWell(
-                  onTap: () {},
+                  onTap: () {
+                    js.context.callMethod(
+                        'open', ['viber://chat?number=89826161244']);
+                  },
                   child: ClipRRect(
                       borderRadius: BorderRadius.circular(16.0),
                       child: Image.asset("images/icon_viber.png",
                           width: 32, height: 32)))),
-          Container(
+          /* Container(
               padding: EdgeInsets.fromLTRB(12, 0, 12, 0),
               child: InkWell(
                   onTap: () {},
                   child: ClipRRect(
                       borderRadius: BorderRadius.circular(16.0),
                       child: Image.asset("images/icon_instagram.png",
-                          width: 32, height: 32)))),
+                          width: 32, height: 32)))),*/
           Container(
               padding: EdgeInsets.fromLTRB(12, 0, 12, 0),
               child: InkWell(
-                  onTap: () {},
+                  onTap: () {
+                    js.context.callMethod(
+                        'open', ['https://www.youtube.com/user/xayccone']);
+                  },
                   child: ClipRRect(
                       borderRadius: BorderRadius.circular(16.0),
                       child: Image.asset("images/icon_youtube.png",
