@@ -24,7 +24,7 @@ class FooterWidgetState extends State<FooterWidget> {
             child: copyRightText(TextAlign.right)),
         mediumScreen: Container(
             width: double.infinity,
-            padding: EdgeInsets.zero,
+            padding: EdgeInsets.fromLTRB(0, 0, 0, 20),
             child: copyRightText(TextAlign.center)),
         smallScreen: Container(
             width: double.infinity,

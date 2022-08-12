@@ -6,7 +6,6 @@ import 'package:xaycc_portfolio/ui/widgets/FooterWidget.dart';
 import 'package:xaycc_portfolio/ui/widgets/MainHeaderWidget.dart';
 import 'package:xaycc_portfolio/ui/widgets/NavButtonWidget.dart';
 import 'package:xaycc_portfolio/ui/widgets/ProfileInfoWidget.dart';
-import 'package:xaycc_portfolio/ui/widgets/SocialInfoWidget.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -105,7 +104,7 @@ class HomePageState extends State<HomePage> {
             children: <Widget>[
               NavHeaderWidget(navButtons: navButtons()),
               SizedBox(
-                height: MediaQuery.of(context).size.height * marginTop,
+                height: MediaQuery.of(context).size.height * 0.05,
               ),
               ProfileInfoWidget(),
               SizedBox(

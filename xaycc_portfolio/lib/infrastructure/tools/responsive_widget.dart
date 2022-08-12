@@ -31,6 +31,11 @@ class ResponsiveWidget extends StatelessWidget {
     return MediaQuery.of(context).size.width <= 985;
   }
 
+  static bool isCustomLargeScreen(BuildContext context) {
+    return MediaQuery.of(context).size.width <= 2150 &&
+        MediaQuery.of(context).size.width >= 986;
+  }
+
   Widget getLargeScreen() {
     return largeScreen as Widget;
   }

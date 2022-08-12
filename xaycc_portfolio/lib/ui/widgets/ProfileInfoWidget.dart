@@ -19,6 +19,7 @@ class ProfileInfoWidget extends StatelessWidget {
             fit: BoxFit.cover,
           ),
         ),
+        margin: EdgeInsets.fromLTRB(0, 0, isLargeScreen(context) ? 70 : 0, 0),
       );
 
   double getTitleFontSize(context) {
@@ -31,18 +32,36 @@ class ProfileInfoWidget extends StatelessWidget {
       return 62;
   }
 
+  Widget profileImageWidget(context) {
+    if (ResponsiveWidget.isCustomLargeScreen(context))
+      return Container(
+          width: double.infinity, child: Center(child: profileImage(context)));
+    else
+      return profileImage(context);
+  }
+
+  bool isLargeScreen(context) {
+    if (ResponsiveWidget.isCustomLargeScreen(context))
+      return false;
+    else if (ResponsiveWidget.isLargeScreen(context))
+      return true;
+    else
+      return false;
+  }
+
   profileData(context) => Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        crossAxisAlignment: CrossAxisAlignment.center,
+        crossAxisAlignment: isLargeScreen(context)
+            ? CrossAxisAlignment.start
+            : CrossAxisAlignment.center,
         children: <Widget>[
           SizedBox(
             height: MediaQuery.of(context).size.height * 0.05,
           ),
           Text(
             "Всем привет! Меня зовут Алексей, я",
-            textAlign: ResponsiveWidget.isLargeScreen(context)
-                ? TextAlign.left
-                : TextAlign.center,
+            textAlign:
+                isLargeScreen(context) ? TextAlign.left : TextAlign.center,
             textScaleFactor: 2,
             style: TextStyle(
               color: Colors.orange,
@@ -50,13 +69,14 @@ class ProfileInfoWidget extends StatelessWidget {
             ),
           ),
           SizedBox(
-            height: MediaQuery.of(context).size.height * 0.05,
+            height: isLargeScreen(context)
+                ? 0
+                : MediaQuery.of(context).size.height * 0.05,
           ),
           Text(
             "MOBILE DEVELOPER",
-            textAlign: ResponsiveWidget.isLargeScreen(context)
-                ? TextAlign.left
-                : TextAlign.center,
+            textAlign:
+                isLargeScreen(context) ? TextAlign.left : TextAlign.center,
             textScaleFactor: 3,
             style: TextStyle(
                 color: Colors.orange,
@@ -80,7 +100,7 @@ class ProfileInfoWidget extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
-          profileImage(context),
+          profileImageWidget(context),
           profileData(context),
         ]);
   }
@@ -88,11 +108,15 @@ class ProfileInfoWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ResponsiveWidget(
-        largeScreen: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[profileImage(context), profileData(context)],
-        ),
+        largeScreen: isLargeScreen(context)
+            ? Wrap(
+                runAlignment: WrapAlignment.spaceBetween,
+                children: <Widget>[
+                  profileImageWidget(context),
+                  profileData(context)
+                ],
+              )
+            : getSmallMediumWidgets(context),
         customMediumScreen: getSmallMediumWidgets(context),
         mediumScreen: getSmallMediumWidgets(context),
         smallScreen: getSmallMediumWidgets(context));
