@@ -14,9 +14,9 @@ class LiveDotWidgetState extends State<LiveDotWidget> {
         Text(
           "Sidorov Aleksey Ivanovich",
           textScaleFactor: 3.5,
-          textAlign: ResponsiveWidget.isSmallScreen(context)
-              ? TextAlign.center
-              : TextAlign.left,
+          textAlign: ResponsiveWidget.isLargeScreen(context)
+              ? TextAlign.left
+              : TextAlign.center,
           style: TextStyle(
             fontFamily: "HalimunFontApps",
           ),

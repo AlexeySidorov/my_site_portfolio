@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 // ignore: avoid_web_libraries_in_flutter
 import "dart:js" as js;
 import 'package:xaycc_portfolio/infrastructure/tools/responsive_widget.dart';
+import 'package:xaycc_portfolio/ui/widgets/FooterWidget.dart';
 import 'package:xaycc_portfolio/ui/widgets/MainHeaderWidget.dart';
 import 'package:xaycc_portfolio/ui/widgets/NavButtonWidget.dart';
 import 'package:xaycc_portfolio/ui/widgets/ProfileInfoWidget.dart';
@@ -68,7 +69,7 @@ class HomePageState extends State<HomePage> {
                   .callMethod('open', ['https://github.com/AlexeySidorov']))
         ];
 
-    double marginTop = ResponsiveWidget.isSmallScreen(context) ? 0.1 : 0;
+    double marginTop = ResponsiveWidget.isLargeScreen(context) ? 0 : 0.05;
 
     return Scaffold(
       backgroundColor: Colors.transparent,
@@ -106,7 +107,7 @@ class HomePageState extends State<HomePage> {
               SizedBox(
                 height: MediaQuery.of(context).size.height * marginTop,
               ),
-              //ProfileInfoWidget(),
+              ProfileInfoWidget(),
               SizedBox(
                 height: MediaQuery.of(context).size.height * marginTop,
               ),
@@ -119,7 +120,7 @@ class HomePageState extends State<HomePage> {
               SizedBox(
                 height: MediaQuery.of(context).size.height * 0.25,
               ),
-              //  SocialInfoWidget(),
+              FooterWidget(),
             ],
           ),
         ),

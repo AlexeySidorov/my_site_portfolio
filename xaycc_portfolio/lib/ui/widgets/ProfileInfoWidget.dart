@@ -3,12 +3,12 @@ import 'package:xaycc_portfolio/infrastructure/tools/responsive_widget.dart';
 
 class ProfileInfoWidget extends StatelessWidget {
   profileImage(context) => Container(
-        height: ResponsiveWidget.isSmallScreen(context)
-            ? MediaQuery.of(context).size.height * 0.2
-            : MediaQuery.of(context).size.width * 0.15,
-        width: ResponsiveWidget.isSmallScreen(context)
-            ? MediaQuery.of(context).size.height * 0.2
-            : MediaQuery.of(context).size.width * 0.15,
+        height: ResponsiveWidget.isLargeScreen(context)
+            ? MediaQuery.of(context).size.width * 0.15
+            : MediaQuery.of(context).size.height * 0.2,
+        width: ResponsiveWidget.isLargeScreen(context)
+            ? MediaQuery.of(context).size.width * 0.15
+            : MediaQuery.of(context).size.height * 0.2,
         decoration: BoxDecoration(
           backgroundBlendMode: BlendMode.luminosity,
           color: Colors.transparent,
@@ -21,17 +21,28 @@ class ProfileInfoWidget extends StatelessWidget {
         ),
       );
 
+  double getTitleFontSize(context) {
+    if (ResponsiveWidget.isSmallScreen(context))
+      return 24;
+    else if (ResponsiveWidget.isMediumScreen(context) ||
+        ResponsiveWidget.isCustomMediumScreen(context))
+      return 32;
+    else
+      return 62;
+  }
+
   profileData(context) => Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
           SizedBox(
             height: MediaQuery.of(context).size.height * 0.05,
           ),
           Text(
             "Всем привет! Меня зовут Алексей, я",
-            textAlign: ResponsiveWidget.isSmallScreen(context)
-                ? TextAlign.center
-                : TextAlign.left,
+            textAlign: ResponsiveWidget.isLargeScreen(context)
+                ? TextAlign.left
+                : TextAlign.center,
             textScaleFactor: 2,
             style: TextStyle(
               color: Colors.orange,
@@ -43,14 +54,14 @@ class ProfileInfoWidget extends StatelessWidget {
           ),
           Text(
             "MOBILE DEVELOPER",
-            textAlign: ResponsiveWidget.isSmallScreen(context)
-                ? TextAlign.center
-                : TextAlign.left,
+            textAlign: ResponsiveWidget.isLargeScreen(context)
+                ? TextAlign.left
+                : TextAlign.center,
             textScaleFactor: 3,
             style: TextStyle(
                 color: Colors.orange,
                 fontFamily: "KidCraft",
-                fontSize: ResponsiveWidget.isSmallScreen(context) ? 24 : 72),
+                fontSize: getTitleFontSize(context)),
           ),
           SizedBox(
             height: 30,
@@ -66,13 +77,10 @@ class ProfileInfoWidget extends StatelessWidget {
 
   Widget getSmallMediumWidgets(BuildContext context) {
     return Column(
-        mainAxisSize: MainAxisSize.max,
+        crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
           profileImage(context),
-          /* SizedBox(
-            height: MediaQuery.of(context).size.height * 0.1,
-          ),*/
           profileData(context),
         ]);
   }
@@ -82,7 +90,7 @@ class ProfileInfoWidget extends StatelessWidget {
     return ResponsiveWidget(
         largeScreen: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          crossAxisAlignment: CrossAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[profileImage(context), profileData(context)],
         ),
         customMediumScreen: getSmallMediumWidgets(context),

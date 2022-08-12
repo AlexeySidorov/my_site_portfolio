@@ -13,56 +13,53 @@ class NavHeaderWidget extends StatefulWidget {
 }
 
 class NavHeaderWidgetState extends State<NavHeaderWidget> {
-  Widget getSocialWidgets() {
-    return Container(
-        height: 32,
-        child: Row(children: [
-          Container(
-              padding: EdgeInsets.fromLTRB(12, 0, 12, 0),
-              child: InkWell(
+  List<Widget> socialButtons(context) => [
+        Container(
+            padding: EdgeInsets.fromLTRB(12, 0, 12, 0),
+            child: InkWell(
+              onTap: () {
+                js.context.callMethod(
+                    'open', ['tg://msg?text=Mi_mensaje&to=+79826161244']);
+              },
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(16.0),
+                child: Image.asset("images/icon_telegram.png",
+                    width: 32, height: 32),
+              ),
+            )),
+        Container(
+            padding: EdgeInsets.fromLTRB(12, 0, 12, 0),
+            child: InkWell(
                 onTap: () {
-                  js.context.callMethod(
-                      'open', ['tg://msg?text=Mi_mensaje&to=+79826161244']);
+                  js.context.callMethod('open',
+                      ['https://api.whatsapp.com/send?phone=89826161244']);
                 },
                 child: ClipRRect(
-                  borderRadius: BorderRadius.circular(16.0),
-                  child: Image.asset("images/icon_telegram.png",
-                      width: 32, height: 32),
-                ),
-              )),
-          Container(
-              padding: EdgeInsets.fromLTRB(12, 0, 12, 0),
-              child: InkWell(
-                  onTap: () {
-                    js.context.callMethod('open',
-                        ['https://api.whatsapp.com/send?phone=89826161244']);
-                  },
-                  child: ClipRRect(
-                      borderRadius: BorderRadius.circular(16.0),
-                      child: Image.asset("images/icon_whatsapp.png",
-                          width: 32, height: 32)))),
-          Container(
-              padding: EdgeInsets.fromLTRB(12, 0, 12, 0),
-              child: InkWell(
-                  onTap: () {
-                    js.context.callMethod('open', ['skype:x.a.y.c.c.?chat']);
-                  },
-                  child: ClipRRect(
-                      borderRadius: BorderRadius.circular(16.0),
-                      child: Image.asset("images/icon_skype.png",
-                          width: 32, height: 32)))),
-          Container(
-              padding: EdgeInsets.fromLTRB(12, 0, 12, 0),
-              child: InkWell(
-                  onTap: () {
-                    js.context.callMethod(
-                        'open', ['viber://chat?number=89826161244']);
-                  },
-                  child: ClipRRect(
-                      borderRadius: BorderRadius.circular(16.0),
-                      child: Image.asset("images/icon_viber.png",
-                          width: 32, height: 32)))),
-          /* Container(
+                    borderRadius: BorderRadius.circular(16.0),
+                    child: Image.asset("images/icon_whatsapp.png",
+                        width: 32, height: 32)))),
+        Container(
+            padding: EdgeInsets.fromLTRB(12, 0, 12, 0),
+            child: InkWell(
+                onTap: () {
+                  js.context.callMethod('open', ['skype:x.a.y.c.c.?chat']);
+                },
+                child: ClipRRect(
+                    borderRadius: BorderRadius.circular(16.0),
+                    child: Image.asset("images/icon_skype.png",
+                        width: 32, height: 32)))),
+        Container(
+            padding: EdgeInsets.fromLTRB(12, 0, 12, 0),
+            child: InkWell(
+                onTap: () {
+                  js.context
+                      .callMethod('open', ['viber://chat?number=89826161244']);
+                },
+                child: ClipRRect(
+                    borderRadius: BorderRadius.circular(16.0),
+                    child: Image.asset("images/icon_viber.png",
+                        width: 32, height: 32)))),
+        /* Container(
               padding: EdgeInsets.fromLTRB(12, 0, 12, 0),
               child: InkWell(
                   onTap: () {},
@@ -70,18 +67,30 @@ class NavHeaderWidgetState extends State<NavHeaderWidget> {
                       borderRadius: BorderRadius.circular(16.0),
                       child: Image.asset("images/icon_instagram.png",
                           width: 32, height: 32)))),*/
-          Container(
-              padding: EdgeInsets.fromLTRB(12, 0, 12, 0),
-              child: InkWell(
-                  onTap: () {
-                    js.context.callMethod(
-                        'open', ['https://www.youtube.com/user/xayccone']);
-                  },
-                  child: ClipRRect(
-                      borderRadius: BorderRadius.circular(16.0),
-                      child: Image.asset("images/icon_youtube.png",
-                          width: 32, height: 32))))
-        ]));
+        Container(
+            padding: EdgeInsets.fromLTRB(12, 0, 12, 0),
+            child: InkWell(
+                onTap: () {
+                  js.context.callMethod(
+                      'open', ['https://www.youtube.com/user/xayccone']);
+                },
+                child: ClipRRect(
+                    borderRadius: BorderRadius.circular(16.0),
+                    child: Image.asset("images/icon_youtube.png",
+                        width: 32, height: 32))))
+      ];
+
+  Widget getSocialWidgets(context) {
+    if (!ResponsiveWidget.isLargeScreen(context))
+      return Container(
+          height: 32,
+          child: Wrap(
+              runSpacing: 12,
+              alignment: WrapAlignment.center,
+              children: socialButtons(context)));
+    else
+      return Container(
+          height: 32, child: Row(children: socialButtons(context)));
   }
 
   Widget getHeaderWidgets(BuildContext context) {
@@ -89,29 +98,25 @@ class NavHeaderWidgetState extends State<NavHeaderWidget> {
       return Wrap(
         alignment: WrapAlignment.center,
         children: <Widget>[
+          getSocialWidgets(context),
+          SizedBox(
+            height: MediaQuery.of(context).size.height * 0.1,
+          ),
           LiveDotWidget(),
         ],
       );
     } else if (ResponsiveWidget.isMediumScreen(context) ||
         ResponsiveWidget.isCustomMediumScreen(context)) {
-      return Wrap(
-        alignment: WrapAlignment.center,
+      return Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
+          getSocialWidgets(context),
+          SizedBox(
+            height: MediaQuery.of(context).size.height * 0.02,
+          ),
           LiveDotWidget(),
         ],
       );
-      //  getSocialWidgets()
-      /* : Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-                  Wrap(
-                    alignment: WrapAlignment.center,
-                    children: <Widget>[
-                      LiveDotWidget(),
-                    ],
-                  ),
-                  getSocialWidgets()
-                ]);*/
     } else {
       return Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -123,7 +128,7 @@ class NavHeaderWidgetState extends State<NavHeaderWidget> {
               child: Row(
                 children: widget.navButtons ?? [],
               )),
-          getSocialWidgets()
+          getSocialWidgets(context)
         ],
       );
     }
