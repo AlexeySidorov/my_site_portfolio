@@ -5,7 +5,9 @@ import 'package:xaycc_portfolio/infrastructure/tools/responsive_widget.dart';
 import 'package:xaycc_portfolio/ui/widgets/FooterWidget.dart';
 import 'package:xaycc_portfolio/ui/widgets/MainHeaderWidget.dart';
 import 'package:xaycc_portfolio/ui/widgets/NavButtonWidget.dart';
+import 'package:xaycc_portfolio/ui/widgets/PortfolioWidget.dart';
 import 'package:xaycc_portfolio/ui/widgets/ProfileInfoWidget.dart';
+import 'package:xaycc_portfolio/ui/widgets/SkillWidget.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -23,47 +25,15 @@ class HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    /*List<Widget> navTopButtons() => [
-          NavContactButtonWidget(
-              icon: Icons.phone,
-              text: Const.phone,
-              textColor: Colors.white,
-              padding: ResponsiveWidget.isSmallScreen(context)
-                  ? EdgeInsets.fromLTRB(0, 0, 0, 0)
-                  : EdgeInsets.fromLTRB(0, 0, 24, 0),
-              onPressed: () => launch("tel:${Const.phone}")),
-          NavContactButtonWidget(
-              icon: Icons.email_outlined,
-              text: Const.email,
-              textColor: Colors.white,
-              onPressed: () => launch("mailto:${Const.email}")),
-        ];*/
-
     var menuButtonPadding = ResponsiveWidget.isSmallScreen(context) ||
             ResponsiveWidget.isMediumScreen(context)
         ? EdgeInsets.zero
         : EdgeInsets.fromLTRB(32, 0, 32, 0);
 
     List<Widget> navButtons() => [
-          /* NavButtonWidget(
-              text: "Навыки",
-              padding: menuButtonPadding,
-              onPressed: () => js.context.callMethod('open', [
-                    'https://ekaterinburg.hh.ru/resume/e5fb3e7eff0247e6ae0039ed1f416a73733657'
-                  ])),
           NavButtonWidget(
               padding: menuButtonPadding,
-              text: "Портфолио",
-              onPressed: () => js.context
-                  .callMethod('open', ['https://github.com/AlexeySidorov'])),
-          NavButtonWidget(
-              padding: menuButtonPadding,
-              text: "Контакты",
-              onPressed: () => js.context
-                  .callMethod('open', ['https://github.com/AlexeySidorov'])),*/
-          NavButtonWidget(
-              padding: menuButtonPadding,
-              text: "GitHub",
+              text: "Код на GitHub",
               onPressed: () => js.context
                   .callMethod('open', ['https://github.com/AlexeySidorov']))
         ];
@@ -73,16 +43,14 @@ class HomePageState extends State<HomePage> {
     return Scaffold(
       backgroundColor: Colors.transparent,
       appBar: ResponsiveWidget.isSmallScreen(context) ||
-              ResponsiveWidget.isMediumScreen(context) ||
-              ResponsiveWidget.isCustomMediumScreen(context)
+              ResponsiveWidget.isMediumScreen(context)
           ? AppBar(
               elevation: 0.0,
               backgroundColor: Colors.transparent,
             )
           : null,
       drawer: ResponsiveWidget.isSmallScreen(context) ||
-              ResponsiveWidget.isMediumScreen(context) ||
-              ResponsiveWidget.isCustomMediumScreen(context)
+              ResponsiveWidget.isMediumScreen(context)
           ? Drawer(
               elevation: 10,
               child: ListView(
@@ -110,12 +78,14 @@ class HomePageState extends State<HomePage> {
               SizedBox(
                 height: MediaQuery.of(context).size.height * marginTop,
               ),
-              /* Container(
-                    child: GalleryWidget(),
-                    width: 1500,
-                    height: getGalleryContainerHeight(context),
-                    color: Colors.red,
-                  ),*/
+              SizedBox(
+                height: MediaQuery.of(context).size.height * 0.1,
+              ),
+              SkillWidget(),
+              SizedBox(
+                height: MediaQuery.of(context).size.height * 0.1,
+              ),
+              PortfolioWidget(),
               SizedBox(
                 height: MediaQuery.of(context).size.height * 0.25,
               ),

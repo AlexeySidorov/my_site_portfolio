@@ -3,14 +3,12 @@ import 'package:flutter/material.dart';
 class ResponsiveWidget extends StatelessWidget {
   final Widget? largeScreen;
   final Widget? mediumScreen;
-  final Widget? customMediumScreen;
   final Widget? smallScreen;
 
   const ResponsiveWidget(
       {Key? key,
       @required this.largeScreen,
       this.mediumScreen,
-      this.customMediumScreen,
       this.smallScreen})
       : super(key: key);
 
@@ -23,25 +21,12 @@ class ResponsiveWidget extends StatelessWidget {
   }
 
   static bool isMediumScreen(BuildContext context) {
-    return MediaQuery.of(context).size.width > 800 &&
+    return MediaQuery.of(context).size.width >= 800 &&
         MediaQuery.of(context).size.width < 1200;
-  }
-
-  static bool isCustomMediumScreen(BuildContext context) {
-    return MediaQuery.of(context).size.width <= 985;
-  }
-
-  static bool isCustomLargeScreen(BuildContext context) {
-    return MediaQuery.of(context).size.width <= 2150 &&
-        MediaQuery.of(context).size.width >= 986;
   }
 
   Widget getLargeScreen() {
     return largeScreen as Widget;
-  }
-
-  Widget getCustomMediumScreen() {
-    return customMediumScreen as Widget;
   }
 
   Widget getMediumScreen() {
@@ -54,31 +39,13 @@ class ResponsiveWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return LayoutBuilder(
-      builder: (context, constraints) {
-        if (constraints.maxWidth > 1200) {
-          return getLargeScreen();
-        } else if (constraints.maxWidth < 1200 && constraints.maxWidth > 800) {
-          if (constraints.maxWidth <= 985) {
-            if (customMediumScreen == null || mediumScreen == null)
-              return Container();
-            else if (customMediumScreen != null)
-              return getCustomMediumScreen();
-            else
-              return getMediumScreen();
-          } else {
-            if (mediumScreen != null)
-              return getMediumScreen();
-            else
-              return getSmallScreen();
-          }
-        } else {
-          if (smallScreen != null)
-            return getSmallScreen();
-          else
-            return getLargeScreen();
-        }
-      },
-    );
+    return LayoutBuilder(builder: (context, constraints) {
+      if (constraints.maxWidth >= 1200)
+        return getLargeScreen();
+      else if (constraints.maxWidth < 1200 && constraints.maxWidth >= 800)
+        return getMediumScreen();
+      else
+        return getSmallScreen();
+    });
   }
 }

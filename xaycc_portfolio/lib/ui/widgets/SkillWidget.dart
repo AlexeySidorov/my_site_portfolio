@@ -1,323 +1,53 @@
 import 'package:flutter/material.dart';
 import 'package:xaycc_portfolio/infrastructure/tools/responsive_widget.dart';
+import 'package:xaycc_portfolio/ui/widgets/TitleSubtitleWidget.dart';
 
-class SkillWidget extends StatelessWidget {
-  const SkillWidget({Key? key}) : super(key: key);
+class SkillWidget extends StatefulWidget {
+  @override
+  SkillWidgetState createState() => SkillWidgetState();
+}
 
+class SkillWidgetState extends State<SkillWidget> {
+  double getTitleFontSize(context) {
+    if (ResponsiveWidget.isSmallScreen(context))
+      return 14;
+    else if (ResponsiveWidget.isMediumScreen(context))
+      return 18;
+    else
+      return 32;
+  }
+
+  double getSubTitleFontSize(context) {
+    if (ResponsiveWidget.isSmallScreen(context))
+      return 12;
+    else if (ResponsiveWidget.isMediumScreen(context))
+      return 18;
+    else
+      return 24;
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return ResponsiveWidget(
-        largeScreen: ResponsiveWidget.isLargeScreen(context) //Start desktop
-            ? Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: <Widget>[
-                    Container(
-                      //C#
-                      width: 215,
-                      height: 115,
-                      decoration: BoxDecoration(
-                          border: Border.all(color: Colors.white),
-                          color: Colors.white,
-                          borderRadius: BorderRadius.all(Radius.circular(10))),
-                      child: Row(
-                        children: <Widget>[
-                          Padding(
-                              padding: const EdgeInsets.all(12.0),
-                              child: Image.asset('images/csharp_icon.png',
-                                  width: 82.0, height: 82.0)),
-                          Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: <Widget>[
-                                Text(
-                                  "Опыт:",
-                                  textScaleFactor: 1.5,
-                                  style: TextStyle(
-                                      color: Colors.indigo[700],
-                                      fontWeight: FontWeight.bold,
-                                      fontFamily: "DatcubBold"),
-                                ),
-                                Text(
-                                  "10 лет",
-                                  textScaleFactor: 2,
-                                  style: TextStyle(
-                                      color: Colors.indigo[700],
-                                      fontWeight: FontWeight.bold,
-                                      fontFamily: "DatcubBold"),
-                                )
-                              ])
-                        ],
-                      ),
-                    ),
-                    SizedBox(
-                      width: MediaQuery.of(context).size.width * 0.01,
-                    ),
-                    Container(
-                      //Java
-                      width: 205,
-                      height: 115,
-                      decoration: BoxDecoration(
-                          border: Border.all(color: Colors.white),
-                          color: Colors.white,
-                          borderRadius: BorderRadius.all(Radius.circular(10))),
-                      child: Row(
-                        children: <Widget>[
-                          Padding(
-                              padding: const EdgeInsets.all(12.0),
-                              child: Image.asset('images/java_icon.png',
-                                  width: 78.0, height: 78.0)),
-                          Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: <Widget>[
-                                Text(
-                                  "Опыт:",
-                                  textScaleFactor: 1.5,
-                                  style: TextStyle(
-                                      color: Colors.indigo[700],
-                                      fontWeight: FontWeight.bold,
-                                      fontFamily: "DatcubBold"),
-                                ),
-                                Text(
-                                  "8 лет",
-                                  textScaleFactor: 2,
-                                  style: TextStyle(
-                                      color: Colors.indigo[700],
-                                      fontWeight: FontWeight.bold,
-                                      fontFamily: "DatcubBold"),
-                                )
-                              ])
-                        ],
-                      ),
-                    ),
-                    SizedBox(
-                      width: MediaQuery.of(context).size.width * 0.01,
-                    ),
-                    Container(
-                      //Kotlin
-                      width: 235,
-                      height: 115,
-                      decoration: BoxDecoration(
-                          border: Border.all(color: Colors.white),
-                          color: Colors.white,
-                          borderRadius: BorderRadius.all(Radius.circular(10))),
-                      child: Row(
-                        children: <Widget>[
-                          Padding(
-                              padding: const EdgeInsets.all(12.0),
-                              child: Image.asset('images/kotlin_icon.png',
-                                  width: 82.0, height: 82.0)),
-                          Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: <Widget>[
-                                Text(
-                                  "Опыт:",
-                                  textScaleFactor: 1.5,
-                                  style: TextStyle(
-                                      color: Colors.indigo[700],
-                                      fontWeight: FontWeight.bold,
-                                      fontFamily: "DatcubBold"),
-                                ),
-                                Text(
-                                  "> 3 лет",
-                                  textScaleFactor: 2,
-                                  style: TextStyle(
-                                      color: Colors.indigo[700],
-                                      fontWeight: FontWeight.bold,
-                                      fontFamily: "DatcubBold"),
-                                )
-                              ])
-                        ],
-                      ),
-                    ),
-                    SizedBox(
-                      width: MediaQuery.of(context).size.width * 0.01,
-                    ),
-                    Container(
-                      //swift
-                      width: 250,
-                      height: 115,
-                      decoration: BoxDecoration(
-                          border: Border.all(color: Colors.white),
-                          color: Colors.white,
-                          borderRadius: BorderRadius.all(Radius.circular(10))),
-                      child: Row(
-                        children: <Widget>[
-                          Padding(
-                              padding:
-                                  const EdgeInsets.fromLTRB(24, 12, 24, 12),
-                              child: Image.asset('images/swift_icon.png',
-                                  width: 72.0, height: 72.0)),
-                          Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: <Widget>[
-                                Text(
-                                  "Опыт:",
-                                  textScaleFactor: 1.5,
-                                  style: TextStyle(
-                                      color: Colors.indigo[700],
-                                      fontWeight: FontWeight.bold,
-                                      fontFamily: "DatcubBold"),
-                                ),
-                                Text(
-                                  "> 3 лет",
-                                  textScaleFactor: 2,
-                                  style: TextStyle(
-                                      color: Colors.indigo[700],
-                                      fontWeight: FontWeight.bold,
-                                      fontFamily: "DatcubBold"),
-                                )
-                              ])
-                        ],
-                      ),
-                    ),
-                    SizedBox(
-                      width: MediaQuery.of(context).size.width * 0.01,
-                    ),
-                    Container(
-                      //flutter
-                      width: 252,
-                      height: 115,
-                      decoration: BoxDecoration(
-                          border: Border.all(color: Colors.white),
-                          color: Colors.white,
-                          borderRadius: BorderRadius.all(Radius.circular(10))),
-                      child: Row(
-                        children: <Widget>[
-                          Padding(
-                              padding: const EdgeInsets.all(12.0),
-                              child: Image.asset('images/flutter_icon.png',
-                                  width: 82.0, height: 82.0)),
-                          Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: <Widget>[
-                                Text(
-                                  "Опыт:",
-                                  textScaleFactor: 1.5,
-                                  style: TextStyle(
-                                      color: Colors.indigo[700],
-                                      fontWeight: FontWeight.bold,
-                                      fontFamily: "DatcubBold"),
-                                ),
-                                Text(
-                                  "> 1 года",
-                                  textScaleFactor: 2,
-                                  style: TextStyle(
-                                      color: Colors.indigo[700],
-                                      fontWeight: FontWeight.bold,
-                                      fontFamily: "DatcubBold"),
-                                )
-                              ])
-                        ],
-                      ),
-                    )
-                  ])
-            : ResponsiveWidget.isSmallScreen(context) // desktop
-                ? Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: <Widget>[
-                        Container(
-                          width: 250,
-                          height: 150,
-                          decoration: BoxDecoration(
-                              border: Border.all(color: Colors.white),
-                              color: Colors.white,
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(10))),
-                        ),
-                        SizedBox(
-                          height: MediaQuery.of(context).size.height * 0.01,
-                        ),
-                        Container(
-                          width: 250,
-                          height: 150,
-                          decoration: BoxDecoration(
-                              border: Border.all(color: Colors.white),
-                              color: Colors.white,
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(10))),
-                        ),
-                        SizedBox(
-                          height: MediaQuery.of(context).size.height * 0.01,
-                        ),
-                        Container(
-                          width: 250,
-                          height: 150,
-                          decoration: BoxDecoration(
-                              border: Border.all(color: Colors.white),
-                              color: Colors.white,
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(10))),
-                        ),
-                        SizedBox(
-                          height: MediaQuery.of(context).size.height * 0.01,
-                        ),
-                        Container(
-                          width: 250,
-                          height: 150,
-                          decoration: BoxDecoration(
-                              border: Border.all(color: Colors.white),
-                              color: Colors.white,
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(10))),
-                        )
-                      ])
-                : Column(children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: <Widget>[
-                        Container(
-                          width: 250,
-                          height: 150,
-                          decoration: BoxDecoration(
-                              border: Border.all(color: Colors.white),
-                              color: Colors.white,
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(10))),
-                        ),
-                        SizedBox(
-                          width: MediaQuery.of(context).size.width * 0.01,
-                        ),
-                        Container(
-                          width: 250,
-                          height: 150,
-                          decoration: BoxDecoration(
-                              border: Border.all(color: Colors.white),
-                              color: Colors.white,
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(10))),
-                        ),
-                      ],
-                    ),
-                    Row(
-                      children: [
-                        Container(
-                          width: 250,
-                          height: 150,
-                          decoration: BoxDecoration(
-                              border: Border.all(color: Colors.white),
-                              color: Colors.white,
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(10))),
-                        ),
-                        SizedBox(
-                          width: MediaQuery.of(context).size.width * 0.01,
-                        ),
-                        Container(
-                          width: 250,
-                          height: 150,
-                          decoration: BoxDecoration(
-                              border: Border.all(color: Colors.white),
-                              color: Colors.white,
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(10))),
-                        )
-                      ],
-                    )
-                  ]));
+    return Container(
+      child: TitleSubTitleWidget(
+        title: "ЧТО Я ИСПОЛЬЗУЮ В РАБОТЕ",
+        subTitle: "НАВЫКИ",
+        titleFonSize: getTitleFontSize(context),
+        subTitleFonSize: getSubTitleFontSize(context),
+        titleScaleFactor: 2,
+        subTitleScaleFactor: 1.5,
+        titleFontWeight: FontWeight.bold,
+        subTitleFontWeight: FontWeight.bold,
+        fontFamily: "TerminatorGenisys",
+        titleTextAlign: !ResponsiveWidget.isSmallScreen(context)
+            ? TextAlign.left
+            : TextAlign.center,
+        subTitleTextAlign: !ResponsiveWidget.isSmallScreen(context)
+            ? TextAlign.left
+            : TextAlign.center,
+        titleTextColor: Colors.grey.shade800,
+        subTitleTextColor: Colors.orange,
+      ),
+    );
   }
 }

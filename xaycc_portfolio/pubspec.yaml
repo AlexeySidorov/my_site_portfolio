@@ -30,6 +30,7 @@ dev_dependencies:
    build: ^1.2.0
    build_runner: ^1.7.0
    build_web_compilers: ^2.7.0
+   carousel_slider: ^4.1.1
 
 
 # For information on the generic Dart part of this file, see the
@@ -100,6 +101,10 @@ flutter:
     - family: KidCraft
       fonts:
         - asset: fonts/KidCraft.ttf
+    - family: TerminatorGenisys
+      fonts:
+        - asset: fonts/TerminatorGenisys.ttf
+        
 
   #
   # For details regarding fonts from package dependencies,

@@ -23,17 +23,15 @@ class ProfileInfoWidget extends StatelessWidget {
       );
 
   double getTitleFontSize(context) {
-    if (ResponsiveWidget.isSmallScreen(context))
-      return 24;
-    else if (ResponsiveWidget.isMediumScreen(context) ||
-        ResponsiveWidget.isCustomMediumScreen(context))
+    if (ResponsiveWidget.isSmallScreen(context)) return 24;
+    if (ResponsiveWidget.isMediumScreen(context))
       return 32;
     else
       return 62;
   }
 
   Widget profileImageWidget(context) {
-    if (ResponsiveWidget.isCustomLargeScreen(context))
+    if (ResponsiveWidget.isMediumScreen(context))
       return Container(
           width: double.infinity, child: Center(child: profileImage(context)));
     else
@@ -41,9 +39,7 @@ class ProfileInfoWidget extends StatelessWidget {
   }
 
   bool isLargeScreen(context) {
-    if (ResponsiveWidget.isCustomLargeScreen(context))
-      return false;
-    else if (ResponsiveWidget.isLargeScreen(context))
+    if (ResponsiveWidget.isLargeScreen(context))
       return true;
     else
       return false;
@@ -51,21 +47,18 @@ class ProfileInfoWidget extends StatelessWidget {
 
   profileData(context) => Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        crossAxisAlignment: isLargeScreen(context)
-            ? CrossAxisAlignment.start
-            : CrossAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
           SizedBox(
             height: MediaQuery.of(context).size.height * 0.05,
           ),
           Text(
             "Всем привет! Меня зовут Алексей, я",
-            textAlign:
-                isLargeScreen(context) ? TextAlign.left : TextAlign.center,
+            textAlign: TextAlign.center,
             textScaleFactor: 2,
             style: TextStyle(
               color: Colors.orange,
-              fontFamily: "RobotoRegular",
+              fontFamily: "TerminatorGenisys",
             ),
           ),
           SizedBox(
@@ -75,8 +68,7 @@ class ProfileInfoWidget extends StatelessWidget {
           ),
           Text(
             "MOBILE DEVELOPER",
-            textAlign:
-                isLargeScreen(context) ? TextAlign.left : TextAlign.center,
+            textAlign: TextAlign.center,
             textScaleFactor: 3,
             style: TextStyle(
                 color: Colors.orange,
@@ -85,13 +77,7 @@ class ProfileInfoWidget extends StatelessWidget {
           ),
           SizedBox(
             height: 30,
-          ),
-          /*SizedBox(
-        height: 20,
-      ),
-      Row(
-        children: [SkillWidget()],
-      )*/
+          )
         ],
       );
 
@@ -117,7 +103,6 @@ class ProfileInfoWidget extends StatelessWidget {
                 ],
               )
             : getSmallMediumWidgets(context),
-        customMediumScreen: getSmallMediumWidgets(context),
         mediumScreen: getSmallMediumWidgets(context),
         smallScreen: getSmallMediumWidgets(context));
   }

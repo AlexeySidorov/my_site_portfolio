@@ -59,14 +59,6 @@ class NavHeaderWidgetState extends State<NavHeaderWidget> {
                     borderRadius: BorderRadius.circular(16.0),
                     child: Image.asset("images/icon_viber.png",
                         width: 32, height: 32)))),
-        /* Container(
-              padding: EdgeInsets.fromLTRB(12, 0, 12, 0),
-              child: InkWell(
-                  onTap: () {},
-                  child: ClipRRect(
-                      borderRadius: BorderRadius.circular(16.0),
-                      child: Image.asset("images/icon_instagram.png",
-                          width: 32, height: 32)))),*/
         Container(
             padding: EdgeInsets.fromLTRB(12, 0, 12, 0),
             child: InkWell(
@@ -105,8 +97,7 @@ class NavHeaderWidgetState extends State<NavHeaderWidget> {
           LiveDotWidget(),
         ],
       );
-    } else if (ResponsiveWidget.isMediumScreen(context) ||
-        ResponsiveWidget.isCustomMediumScreen(context)) {
+    } else if (ResponsiveWidget.isMediumScreen(context)) {
       return Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[

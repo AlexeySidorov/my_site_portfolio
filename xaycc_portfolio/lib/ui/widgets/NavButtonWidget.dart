@@ -22,7 +22,7 @@ class NavButtonWidget extends StatelessWidget {
         child: Text(
           text,
           style: TextStyle(
-              color: textColor, fontFamily: "RobotoRegular", fontSize: 16),
+              color: textColor, fontFamily: "TerminatorGenisys", fontSize: 16),
         ),
         onPressed: onPressed,
         style: ButtonStyle(
