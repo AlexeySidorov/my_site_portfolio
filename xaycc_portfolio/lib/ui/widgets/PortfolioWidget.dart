@@ -43,6 +43,14 @@ class PortfolioWidgetState extends State<PortfolioWidget> {
       return TextAlign.end;
   }
 
+  double getCarouselSliderFraction(context) {
+    if (ResponsiveWidget.isSmallScreen(context)) return 1;
+    if (ResponsiveWidget.isMediumScreen(context))
+      return 0.6;
+    else
+      return 0.4;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(children: [
@@ -64,13 +72,12 @@ class PortfolioWidgetState extends State<PortfolioWidget> {
         height: getCarouselMarginTop(context),
       ),
       Container(
-          width: double.infinity,
+          width: MediaQuery.of(context).size.width,
           height: 500,
           child: CarouselSlider.builder(
               options: CarouselOptions(
-                aspectRatio: 2.0,
                 enlargeCenterPage: true,
-                viewportFraction: 0.4,
+                viewportFraction: getCarouselSliderFraction(context),
               ),
               itemCount: (imgList.length / 2).round(),
               itemBuilder: (context, index, realIdx) {
@@ -78,8 +85,9 @@ class PortfolioWidgetState extends State<PortfolioWidget> {
                 return Row(
                   children: [first].map((idx) {
                     return Expanded(
-                      flex: 5,
+                      flex: 1,
                       child: Container(
+                        width: MediaQuery.of(context).size.width,
                         margin: EdgeInsets.symmetric(horizontal: 12),
                         child: Image.network(imgList[idx], fit: BoxFit.cover),
                       ),
@@ -108,7 +116,7 @@ final List<Widget> imageSliders = imgList
                 borderRadius: BorderRadius.all(Radius.circular(5.0)),
                 child: Stack(
                   children: <Widget>[
-                    Image.network(item, fit: BoxFit.cover, width: 800.0),
+                    Image.network(item, fit: BoxFit.cover),
                     Positioned(
                       bottom: 0.0,
                       left: 0.0,
@@ -163,7 +171,7 @@ class _CarouselWithIndicatorState extends State<CarouselWithIndicatorDemo> {
           options: CarouselOptions(
               autoPlay: true,
               enlargeCenterPage: true,
-              aspectRatio: 2.0,
+              aspectRatio: 1.0,
               onPageChanged: (index, reason) {
                 setState(() {
                   _current = index;
