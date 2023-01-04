@@ -15,14 +15,6 @@ class HomePage extends StatefulWidget {
 }
 
 class HomePageState extends State<HomePage> {
-  double getGalleryContainerHeight(BuildContext context) {
-    if (ResponsiveWidget.isLargeScreen(context)) return 525;
-    if (ResponsiveWidget.isMediumScreen(context)) return 500;
-    if (ResponsiveWidget.isSmallScreen(context)) return 880;
-
-    return 1;
-  }
-
   @override
   Widget build(BuildContext context) {
     var menuButtonPadding = ResponsiveWidget.isSmallScreen(context) ||
@@ -85,6 +77,9 @@ class HomePageState extends State<HomePage> {
                 height: MediaQuery.of(context).size.height * 0.25,
               ),
               FooterWidget(),
+              SizedBox(
+                height: MediaQuery.of(context).size.height * 0.01,
+              ),
             ],
           ),
         ),
