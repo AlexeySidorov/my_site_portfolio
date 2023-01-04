@@ -21,17 +21,15 @@ class PortfolioWidgetState extends State<PortfolioWidget> {
   double getSubTitleFontSize(context) {
     if (ResponsiveWidget.isSmallScreen(context))
       return 12;
-    else if (ResponsiveWidget.isMediumScreen(context) ||
-        ResponsiveWidget.isMediumScreen(context))
+    else if (ResponsiveWidget.isMediumScreen(context))
       return 18;
     else
       return 24;
   }
 
   double getCarouselMarginTop(context) {
-    if (ResponsiveWidget.isSmallScreen(context))
-      return 0;
-    else if (ResponsiveWidget.isMediumScreen(context))
+    if (ResponsiveWidget.isSmallScreen(context) ||
+        ResponsiveWidget.isMediumScreen(context))
       return 0;
     else
       return 120;
@@ -157,7 +155,6 @@ class _CarouselWithIndicatorState extends State<CarouselWithIndicatorDemo> {
 
   @override
   Widget build(BuildContext context) {
-    final double height = MediaQuery.of(context).size.height;
     return Column(children: [
       Expanded(
         child: CarouselSlider(

@@ -76,7 +76,7 @@ class ProfileInfoWidget extends StatelessWidget {
                 fontSize: getTitleFontSize(context)),
           ),
           SizedBox(
-            height: 30,
+            height: isLargeScreen(context) ? 30 : 15,
           )
         ],
       );
@@ -93,17 +93,6 @@ class ProfileInfoWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ResponsiveWidget(
-        largeScreen: isLargeScreen(context)
-            ? Wrap(
-                runAlignment: WrapAlignment.spaceBetween,
-                children: <Widget>[
-                  profileImageWidget(context),
-                  profileData(context)
-                ],
-              )
-            : getSmallMediumWidgets(context),
-        mediumScreen: getSmallMediumWidgets(context),
-        smallScreen: getSmallMediumWidgets(context));
+    return getSmallMediumWidgets(context);
   }
 }

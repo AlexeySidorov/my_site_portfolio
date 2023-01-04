@@ -7,7 +7,7 @@ import 'package:xaycc_portfolio/ui/widgets/MainHeaderWidget.dart';
 import 'package:xaycc_portfolio/ui/widgets/NavButtonWidget.dart';
 import 'package:xaycc_portfolio/ui/widgets/PortfolioWidget.dart';
 import 'package:xaycc_portfolio/ui/widgets/ProfileInfoWidget.dart';
-import 'package:xaycc_portfolio/ui/widgets/SkillWidget.dart';
+import 'package:xaycc_portfolio/ui/widgets/Skills/SkillsWidget.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -37,8 +37,6 @@ class HomePageState extends State<HomePage> {
               onPressed: () => js.context
                   .callMethod('open', ['https://github.com/AlexeySidorov']))
         ];
-
-    double marginTop = ResponsiveWidget.isLargeScreen(context) ? 0 : 0.05;
 
     return Scaffold(
       backgroundColor: Colors.transparent,
@@ -76,12 +74,9 @@ class HomePageState extends State<HomePage> {
               ),
               ProfileInfoWidget(),
               SizedBox(
-                height: MediaQuery.of(context).size.height * marginTop,
-              ),
-              SizedBox(
                 height: MediaQuery.of(context).size.height * 0.1,
               ),
-              SkillWidget(),
+              SkillsWidget(),
               SizedBox(
                 height: MediaQuery.of(context).size.height * 0.1,
               ),

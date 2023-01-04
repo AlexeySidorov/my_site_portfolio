@@ -47,7 +47,7 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - images/icon_vk.png
-    - images/icon_github.jpg
+    - images/icon_github.png
     - images/icon_viber.png
     - images/icon_whatsapp.png
     - images/icon_telegram.png
@@ -57,6 +57,7 @@ flutter:
     - images/kotlin_icon.png
     - images/swift_icon.png
     - images/flutter_icon.png
+    - images/xamarin_icon.png
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
